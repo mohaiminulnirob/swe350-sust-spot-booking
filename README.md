@@ -82,7 +82,8 @@ A full‑stack web application for **booking on‑campus spots** at **Shahjalal 
 | **MySQL 2** | Database driver (promise‑based pool) |
 | **bcryptjs** | Password hashing |
 | **jsonwebtoken** | JWT authentication |
-| **Multer** | File uploads (profile pics, signatures, spot images, blog media) |
+| **Multer + Cloudinary** | File uploads via Cloudinary (profile pics, signatures, spot images, blog media) |
+| **Multer-storage-cloudinary** | Cloudinary storage engine for multer |
 | **Nodemailer** | Email sending (verification, password reset, booking notifications) |
 | **cors** | Cross‑origin resource sharing |
 | **dotenv** | Environment variable management |
@@ -218,7 +219,8 @@ swe350-sust-spot-booking/
 │   ├── server.js             # Express entry point
 │   ├── database.sql          # Full MySQL schema
 │   ├── config/
-│   │   └── db.js             # MySQL connection pool
+│   │   ├── db.js             # MySQL connection pool
+│   │   └── cloudinary.js     # Cloudinary config & multer storage
 │   ├── controllers/          # Route handlers
 │   │   ├── adminController.js
 │   │   ├── approverController.js
@@ -527,6 +529,11 @@ SMTP_SECURE=false
 SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_app_password
 SMTP_FROM="spot-booking <no-reply@sust.local>"
+
+# Cloudinary (file uploads)
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 ---
@@ -543,7 +550,6 @@ SMTP_FROM="spot-booking <no-reply@sust.local>"
 - [ ] **Payment Gateway** — Paid booking for external users
 - [ ] **Email Templates** — Rich HTML email designs
 - [ ] **Dark Mode** — Theme toggle
-- [ ] **Mobile App** — React Native / Flutter companion
 - [ ] **iCalendar Export** — Add events to Google Calendar / Outlook
 - [ ] **Internationalization (i18n)** — Multi‑language support
 - [ ] **Audit Logging** — Admin action history trail
