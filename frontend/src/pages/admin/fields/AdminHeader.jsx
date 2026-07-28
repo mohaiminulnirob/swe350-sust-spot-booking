@@ -7,11 +7,7 @@ import sustLogo from '../../../assets/sust_logo_2.png';
  *   unreadCount      – number of unread notifications
  *   onBellClick      – open notifications panel
  */
-const AdminHeader = ({ unreadCount, onBellClick }) => {
-  const handleLogout = () => {
-    localStorage.removeItem("adminToken");
-    window.location.href = "/login";
-  };
+const AdminHeader = ({ unreadCount, onBellClick, onLogout }) => {
 
   return (
     <header className="bg-[var(--header-bg)] h-16 flex items-center justify-between px-7 sticky top-0 z-50 shadow-[0_2px_12px_rgba(14,165,233,0.3)]">
@@ -43,7 +39,7 @@ const AdminHeader = ({ unreadCount, onBellClick }) => {
 
         {/* Logout */}
         <button
-          onClick={handleLogout}
+          onClick={onLogout}
           className="bg-white text-[#0284c7] border-none rounded-[10px] px-5 py-2 cursor-pointer font-bold text-sm transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.1)] hover:-translate-y-0.5"
         >
           Logout

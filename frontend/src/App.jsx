@@ -305,7 +305,17 @@ function App() {
           </>
         ) : authRole === "admin" ? (
           <>
-            <Route path="/admin-dashboard" element={<FieldsAdminDashboard />} />
+            <Route
+              path="/admin-dashboard"
+              element={
+                <FieldsAdminDashboard
+                  onLogout={() => {
+                    localStorage.clear();
+                    setAuthRole(null);
+                  }}
+                />
+              }
+            />
             <Route path="*" element={<Navigate to="/admin-dashboard" />} />
           </>
         ) : (

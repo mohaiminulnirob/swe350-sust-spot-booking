@@ -17,7 +17,7 @@ import "./admin/fields/FieldsAdminDashboard.css";
 import NotificationsModal from "./admin/fields/NotificationsModal";
 import SpotManagement from "./admin/fields/SpotManagement";
 
-export default function FieldsAdminDashboard() {
+export default function FieldsAdminDashboard({ onLogout }) {
   const [activeSection, setActiveSection] = useState("overview");
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
@@ -94,6 +94,7 @@ export default function FieldsAdminDashboard() {
       <AdminHeader
         unreadCount={unreadCount}
         onBellClick={() => setShowNotifications(true)}
+        onLogout={onLogout}
       />
 
       {/* ── BODY ── */}
